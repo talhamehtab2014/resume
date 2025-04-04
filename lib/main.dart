@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Talha Mehtab - Resume',
       debugShowCheckedModeBanner: false,
+      onGenerateTitle: (context) => 'Talha Mehtab - Resume',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
