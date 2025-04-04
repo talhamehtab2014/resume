@@ -34,12 +34,14 @@ class SubheadingValueWidget extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 4),
-              Text(
-                value,
-                style: GoogleFonts.poppins(
-                  fontSize: 14,
-                  fontWeight: FontWeight.normal,
-                  color: const Color(0xFFA2A2A6),
+              FittedBox(
+                child: Text(
+                  value,
+                  style: GoogleFonts.poppins(
+                    fontSize: 14,
+                    fontWeight: FontWeight.normal,
+                    color: const Color(0xFFA2A2A6),
+                  ),
                 ),
               ),
             ],

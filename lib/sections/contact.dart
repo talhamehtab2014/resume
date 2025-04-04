@@ -3,74 +3,82 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:resume_html/divider.dart';
 import 'package:resume_html/subheading_value_widget.dart';
+import 'package:resume_html/utils/device_type_enum.dart';
 
 class ContactMe extends StatelessWidget {
+  final DeviceType deviceType;
   static const id = '/contact';
-  const ContactMe({super.key});
+  const ContactMe({super.key, required this.deviceType});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Padding(
-            padding: EdgeInsets.only(left: 16, right: 16, top: 16),
-            child: Heading(
-              coloredText: "Get ",
-              normalText: "in Touch",
-            ),
+    return deviceType == DeviceType.desktop
+        ? Scaffold(
+            backgroundColor: Colors.transparent,
+            body: pageContent(),
+          )
+        : pageContent();
+  }
+
+  Column pageContent() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Padding(
+          padding: EdgeInsets.only(left: 16, right: 16, top: 16),
+          child: Heading(
+            coloredText: "Get ",
+            normalText: "in Touch",
           ),
-          GradientDivider(
-            width: Get.width,
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
-            colors: const [
-              Color(0xFF3B3C45),
-              Color(0xFF31313A),
+        ),
+        GradientDivider(
+          width: Get.width,
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+          colors: const [
+            Color(0xFF3B3C45),
+            Color(0xFF31313A),
+          ],
+        ),
+        const Padding(
+          padding: EdgeInsets.only(left: 16, right: 16, top: 16),
+          child: Row(
+            children: [
+              Expanded(
+                child: SubheadingValueWidget(
+                  subheading: "Address",
+                  value: "Rawalpindi, Pakistan",
+                ),
+              ),
+              Expanded(
+                child: SubheadingValueWidget(
+                  subheading: "Email",
+                  value: "Talhamehtab2014@gmail.com",
+                ),
+              ),
             ],
           ),
-          const Padding(
-            padding: EdgeInsets.only(left: 16, right: 16, top: 16),
-            child: Row(
-              children: [
-                Expanded(
-                  child: SubheadingValueWidget(
-                    subheading: "Address",
-                    value: "Rawalpindi, Pakistan",
-                  ),
+        ),
+        const Padding(
+          padding: EdgeInsets.only(left: 16, right: 16, top: 16),
+          child: Row(
+            children: [
+              Expanded(
+                child: SubheadingValueWidget(
+                  subheading: "Phone No.",
+                  value: "+92 336 5434969",
                 ),
-                Expanded(
-                  child: SubheadingValueWidget(
-                    subheading: "Email",
-                    value: "Talhamehtab2014@gmail.com",
-                  ),
+              ),
+              Expanded(
+                child: SubheadingValueWidget(
+                  subheading: "Freelance",
+                  value: "Available",
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-          const Padding(
-            padding: EdgeInsets.only(left: 16, right: 16, top: 16),
-            child: Row(
-              children: [
-                Expanded(
-                  child: SubheadingValueWidget(
-                    subheading: "Phone No.",
-                    value: "+92 336 5434969",
-                  ),
-                ),
-                Expanded(
-                  child: SubheadingValueWidget(
-                    subheading: "Freelance",
-                    value: "Available",
-                  ),
-                ),
-              ],
-            ),
-          )
-        ],
-      ),
+        )
+      ],
     );
   }
 }
