@@ -8,7 +8,6 @@ import 'package:resume_html/divider.dart';
 import 'package:resume_html/sections/about.dart';
 import 'package:resume_html/sections/contact.dart';
 import 'package:resume_html/sections/resume.dart';
-import 'package:resume_html/sections/work.dart';
 import 'package:resume_html/utils/device_type_enum.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -18,7 +17,6 @@ class SideNavigaton extends StatelessWidget {
   final GlobalKey _section1Key = GlobalKey();
   final GlobalKey _section2Key = GlobalKey();
   final GlobalKey _section3Key = GlobalKey();
-  final GlobalKey _section4Key = GlobalKey();
 
   final controller = Get.put(SideNavigationController());
   SideNavigaton({super.key, required this.deviceType});
@@ -42,8 +40,8 @@ class SideNavigaton extends StatelessWidget {
             connectDots: false,
             onTapAnimation: false,
             enableHover: true,
-            isRandomColor: true,
             isRandSize: true,
+            particleColor: const Color(0xFF3B3C45),
             awayAnimationDuration: const Duration(seconds: 10),
             numberOfParticles: 100),
         Column(
@@ -74,48 +72,48 @@ class SideNavigaton extends StatelessWidget {
                       "RESUME",
                       controller.selectedIndex.value == 1,
                       onTap: () {
-                        if (deviceType == DeviceType.mobile ||
-                            deviceType == DeviceType.tablet) {
-                          Get.showSnackbar(const GetSnackBar(
-                            message: "This feature is not yet available",
-                            duration: Duration(seconds: 2),
-                          ));
-                          return;
-                        }
+                        // if (deviceType == DeviceType.mobile ||
+                        //     deviceType == DeviceType.tablet) {
+                        //   Get.showSnackbar(const GetSnackBar(
+                        //     message: "This feature is not yet available",
+                        //     duration: Duration(seconds: 2),
+                        //   ));
+                        //   return;
+                        // }
                         _scrollToSection(_section2Key);
                         controller.updateIndex(1);
                       },
                     ),
                   ),
-                  const GradientDivider(),
-                  Obx(
-                    () => _buildIconButtion(
-                      Icons.brush,
-                      "WORK",
-                      controller.selectedIndex.value == 2,
-                      onTap: () {
-                        if (deviceType == DeviceType.mobile ||
-                            deviceType == DeviceType.tablet) {
-                          Get.showSnackbar(const GetSnackBar(
-                            message: "This feature is not yet available",
-                            duration: Duration(seconds: 2),
-                          ));
-                          return;
-                        }
-                        _scrollToSection(_section3Key);
-                        controller.updateIndex(2);
-                      },
-                    ),
-                  ),
+                  // const GradientDivider(),
+                  // Obx(
+                  //   () => _buildIconButtion(
+                  //     Icons.brush,
+                  //     "WORK",
+                  //     controller.selectedIndex.value == 2,
+                  //     onTap: () {
+                  //       if (deviceType == DeviceType.mobile ||
+                  //           deviceType == DeviceType.tablet) {
+                  //         Get.showSnackbar(const GetSnackBar(
+                  //           message: "This feature is not yet available",
+                  //           duration: Duration(seconds: 2),
+                  //         ));
+                  //         return;
+                  //       }
+                  //       _scrollToSection(_section3Key);
+                  //       controller.updateIndex(2);
+                  //     },
+                  //   ),
+                  // ),
                   const GradientDivider(),
                   Obx(() {
                     return _buildIconButtion(
                       Icons.alternate_email,
                       "CONTACT",
-                      controller.selectedIndex.value == 3,
+                      controller.selectedIndex.value == 2,
                       onTap: () {
-                        _scrollToSection(_section4Key);
-                        controller.updateIndex(3);
+                        _scrollToSection(_section3Key);
+                        controller.updateIndex(2);
                       },
                     );
                   }),
@@ -326,8 +324,12 @@ class SideNavigaton extends StatelessWidget {
                       key: _section1Key,
                       deviceType: deviceType,
                     ),
+                    Resume(
+                      key: _section2Key,
+                      deviceType: deviceType,
+                    ),
                     ContactMe(
-                      key: _section4Key,
+                      key: _section3Key,
                       deviceType: deviceType,
                     ),
                   ],
@@ -349,70 +351,62 @@ class SideNavigaton extends StatelessWidget {
             connectDots: false,
             onTapAnimation: false,
             enableHover: true,
-            isRandomColor: true,
+            particleColor: const Color(0xFF3B3C45),
             isRandSize: true,
             awayAnimationDuration: const Duration(seconds: 10),
             numberOfParticles: 100),
-        Positioned(
-            left: (Get.width * 0.09),
-            top: (Get.height * 0.1),
-            child: Container(
-              decoration: BoxDecoration(
-                color: const Color(0xFF31313A),
-                borderRadius: BorderRadius.circular(4),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Obx(
-                    () => _buildIconButtion(
-                      Icons.person_outlined,
-                      "ABOUT",
-                      controller.selectedIndex.value == 0,
-                      onTap: () {
-                        controller.updateIndex(0);
-                      },
-                    ),
-                  ),
-                  const GradientDivider(),
-                  Obx(
-                    () => _buildIconButtion(
-                      Icons.article_outlined,
-                      "RESUME",
-                      controller.selectedIndex.value == 1,
-                      onTap: () {
-                        controller.updateIndex(1);
-                      },
-                    ),
-                  ),
-                  const GradientDivider(),
-                  Obx(
-                    () => _buildIconButtion(
-                      Icons.brush,
-                      "WORK",
-                      controller.selectedIndex.value == 2,
-                      onTap: () {
-                        controller.updateIndex(2);
-                      },
-                    ),
-                  ),
-                  const GradientDivider(),
-                  Obx(() {
-                    return _buildIconButtion(
-                      Icons.alternate_email,
-                      "CONTACT",
-                      controller.selectedIndex.value == 3,
-                      onTap: () {
-                        controller.updateIndex(3);
-                      },
-                    );
-                  }),
-                ],
-              ),
-            )),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          textDirection: TextDirection.rtl,
           children: [
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.only(
+                  right: Get.width * 0.15,
+                  top: Get.height * 0.1,
+                  bottom: Get.height * 0.1,
+                ),
+                color: const Color(0xFF31313A),
+                child: Obx(
+                  () {
+                    return AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 400),
+                      transitionBuilder:
+                          (Widget child, Animation<double> animation) {
+                        final offsetAnimation = Tween<Offset>(
+                          begin: const Offset(
+                              -0.5, 0.0), // Slight slide from the left
+                          end: Offset.zero,
+                        ).animate(animation);
+
+                        return SlideTransition(
+                          position: offsetAnimation,
+                          child: FadeTransition(
+                            opacity: animation,
+                            child: child,
+                          ),
+                        );
+                      },
+                      child: controller.selectedIndex.value == 0
+                          ? AboutMe(
+                              deviceType: deviceType,
+                            )
+                          : controller.selectedIndex.value == 1
+                              ? Resume(
+                                  deviceType: deviceType,
+                                )
+                              : controller.selectedIndex.value == 2
+                                  ? ContactMe(
+                                      deviceType: deviceType,
+                                    )
+                                  : const Center(
+                                      child: Text("Error"),
+                                    ),
+                    );
+                  },
+                ),
+              ),
+            ),
             Expanded(
               child: Stack(
                 children: [
@@ -632,49 +626,65 @@ class SideNavigaton extends StatelessWidget {
                 ],
               ),
             ),
-            Expanded(
-              child: Container(
-                margin: EdgeInsets.only(
-                  right: Get.width * 0.15,
-                  top: Get.height * 0.1,
-                  bottom: Get.height * 0.1,
-                ),
-                color: const Color(0xFF31313A),
-                child: Obx(
-                  () {
-                    return AnimatedSwitcher(
-                      duration: const Duration(seconds: 1),
-                      transitionBuilder:
-                          (Widget child, Animation<double> animation) {
-                        return FadeTransition(
-                          opacity: animation,
-                          child: ScaleTransition(
-                            scale: animation,
-                            child: child,
-                          ),
-                        );
-                      },
-                      child: controller.selectedIndex.value == 0
-                          ? AboutMe(
-                              deviceType: deviceType,
-                            )
-                          : controller.selectedIndex.value == 1
-                              ? const Resume()
-                              : controller.selectedIndex.value == 2
-                                  ? const Work()
-                                  : controller.selectedIndex.value == 3
-                                      ? ContactMe(
-                                          deviceType: deviceType,
-                                        )
-                                      : const Center(
-                                          child: Text("Error"),
-                                        ),
-                    );
-                  },
-                ),
-              ),
-            ),
           ],
+        ),
+        Positioned(
+          left: (Get.width * 0.09),
+          top: (Get.height * 0.1),
+          child: Container(
+            decoration: BoxDecoration(
+              color: const Color(0xFF31313A),
+              borderRadius: BorderRadius.circular(4),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Obx(
+                  () => _buildIconButtion(
+                    Icons.person_outlined,
+                    "ABOUT",
+                    controller.selectedIndex.value == 0,
+                    onTap: () {
+                      controller.updateIndex(0);
+                    },
+                  ),
+                ),
+                const GradientDivider(),
+                Obx(
+                  () => _buildIconButtion(
+                    Icons.article_outlined,
+                    "RESUME",
+                    controller.selectedIndex.value == 1,
+                    onTap: () {
+                      controller.updateIndex(1);
+                    },
+                  ),
+                ),
+                // const GradientDivider(),
+                // Obx(
+                //   () => _buildIconButtion(
+                //     Icons.brush,
+                //     "WORK",
+                //     controller.selectedIndex.value == 2,
+                //     onTap: () {
+                //       controller.updateIndex(2);
+                //     },
+                //   ),
+                // ),
+                const GradientDivider(),
+                Obx(() {
+                  return _buildIconButtion(
+                    Icons.alternate_email,
+                    "CONTACT",
+                    controller.selectedIndex.value == 2,
+                    onTap: () {
+                      controller.updateIndex(2);
+                    },
+                  );
+                }),
+              ],
+            ),
+          ),
         ),
       ],
     );
