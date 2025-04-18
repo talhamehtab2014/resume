@@ -105,24 +105,6 @@ class ContactMe extends StatelessWidget {
           ),
         ),
         8.sp.verticalSpace,
-        Align(
-          alignment: Alignment.center,
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFFFF9800),
-              foregroundColor: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30),
-              ),
-              padding: const EdgeInsets.symmetric(
-                vertical: 16,
-                horizontal: 32,
-              ),
-            ),
-            onPressed: () async {},
-            child: const Text('Book a Meeting'),
-          ),
-        )
       ],
     );
   }

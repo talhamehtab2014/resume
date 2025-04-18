@@ -569,7 +569,7 @@ class SideNavigaton extends StatelessWidget {
                                 onTap: () {
                                   try {
                                     launchUrll(Uri.parse(
-                                        'https://talhaburneyyy.info/assets/assets/resume/resume.pdf'));
+                                        'https://talhaburneyyy.info/assets/assets/resume/Talha_Burney_4yrs.pdf'));
                                   } catch (e) {
                                     print(e);
                                   }
