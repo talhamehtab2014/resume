@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:resume_html/divider.dart';
-import 'package:resume_html/sections/contact.dart';
-import 'package:resume_html/utils/device_type_enum.dart' as DV;
+import 'package:Personal_Portfolio/divider.dart';
+import 'package:Personal_Portfolio/sections/contact.dart';
+import 'package:Personal_Portfolio/utils/device_type_enum.dart' as DV;
 
 class Resume extends StatelessWidget {
   final DV.DeviceType deviceType;
@@ -345,8 +345,8 @@ class Resume extends StatelessWidget {
           alignment: Alignment.center,
           children: [
             SizedBox(
-              width: 20.sp,
-              height: 20.sp,
+              width: deviceType == DV.DeviceType.mobile ? 50.w : 20.sp,
+              height: deviceType == DV.DeviceType.mobile ? 50.w : 20.sp,
               child: CircularProgressIndicator(
                 value: (percentage / 100),
                 backgroundColor: const Color(0xFF3B3C45),

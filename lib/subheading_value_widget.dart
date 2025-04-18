@@ -40,7 +40,7 @@ class SubheadingValueWidget extends StatelessWidget {
                   style: GoogleFonts.poppins(
                     fontSize: 14,
                     fontWeight: FontWeight.normal,
-                    color: const Color(0xFFA2A2A6),
+                    color: Colors.white,
                   ),
                 ),
               ),

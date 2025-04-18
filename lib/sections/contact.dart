@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:resume_html/divider.dart';
-import 'package:resume_html/subheading_value_widget.dart';
-import 'package:resume_html/utils/device_type_enum.dart';
+import 'package:Personal_Portfolio/divider.dart';
+import 'package:Personal_Portfolio/subheading_value_widget.dart';
+import 'package:Personal_Portfolio/utils/device_type_enum.dart' as dv;
+import 'package:url_launcher/url_launcher.dart';
 
 class ContactMe extends StatelessWidget {
-  final DeviceType deviceType;
+  final dv.DeviceType deviceType;
   static const id = '/contact';
   const ContactMe({super.key, required this.deviceType});
 
   @override
   Widget build(BuildContext context) {
-    return deviceType == DeviceType.desktop
+    return deviceType == dv.DeviceType.desktop
         ? Scaffold(
             backgroundColor: Colors.transparent,
             body: pageContent(),
@@ -40,11 +42,11 @@ class ContactMe extends StatelessWidget {
             Color(0xFF31313A),
           ],
         ),
-        const Padding(
-          padding: EdgeInsets.only(left: 16, right: 16, top: 16),
+        Padding(
+          padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
           child: Row(
             children: [
-              Expanded(
+              const Expanded(
                 child: SubheadingValueWidget(
                   subheading: "Address",
                   value: "Rawalpindi, Pakistan",
@@ -54,28 +56,71 @@ class ContactMe extends StatelessWidget {
                 child: SubheadingValueWidget(
                   subheading: "Email",
                   value: "Talhamehtab2014@gmail.com",
+                  onTap: () async {
+                    final Uri emailUri = Uri(
+                      scheme: 'mailto',
+                      path: "Talhamehtab2014@gmail.com",
+                    );
+
+                    if (await canLaunchUrl(emailUri)) {
+                      await launchUrl(emailUri);
+                    } else {
+                      throw 'Could not launch $emailUri';
+                    }
+                  },
                 ),
               ),
             ],
           ),
         ),
-        const Padding(
-          padding: EdgeInsets.only(left: 16, right: 16, top: 16),
+        Padding(
+          padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
           child: Row(
             children: [
               Expanded(
                 child: SubheadingValueWidget(
                   subheading: "Phone No.",
                   value: "+92 336 5434969",
+                  onTap: () async {
+                    final Uri phoneUri = Uri(
+                      scheme: 'tel',
+                      path: '+923365434969',
+                    );
+
+                    if (await canLaunchUrl(phoneUri)) {
+                      await launchUrl(phoneUri);
+                    } else {
+                      throw 'Could not launch $phoneUri';
+                    }
+                  },
                 ),
               ),
-              Expanded(
+              const Expanded(
                 child: SubheadingValueWidget(
                   subheading: "Freelance",
                   value: "Available",
                 ),
               ),
             ],
+          ),
+        ),
+        8.sp.verticalSpace,
+        Align(
+          alignment: Alignment.center,
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFFFF9800),
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
+              ),
+              padding: const EdgeInsets.symmetric(
+                vertical: 16,
+                horizontal: 32,
+              ),
+            ),
+            onPressed: () async {},
+            child: const Text('Book a Meeting'),
           ),
         )
       ],

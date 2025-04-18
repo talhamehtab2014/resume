@@ -2,9 +2,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';
-import 'package:resume_html/firebase_options.dart';
-import 'package:resume_html/side_navigaton.dart';
-import 'package:resume_html/utils/device_type_enum.dart' as dv;
+import 'package:Personal_Portfolio/firebase_options.dart';
+import 'package:Personal_Portfolio/side_navigaton.dart';
+import 'package:Personal_Portfolio/utils/device_type_enum.dart' as dv;
 
 void main() async {
   await Firebase.initializeApp(

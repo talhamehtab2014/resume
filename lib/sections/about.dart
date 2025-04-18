@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:resume_html/divider.dart';
-import 'package:resume_html/sections/contact.dart';
-import 'package:resume_html/utils/device_type_enum.dart';
+import 'package:Personal_Portfolio/divider.dart';
+import 'package:Personal_Portfolio/sections/contact.dart';
+import 'package:Personal_Portfolio/utils/device_type_enum.dart';
 
 class AboutMe extends StatelessWidget {
   final DeviceType deviceType;
@@ -58,7 +58,7 @@ class AboutMe extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
           child: Text(
-            "Software engineer from Rawalpindi, Pakistan. Specializing in Flutter and Android development.",
+            "I am a dedicated Software Engineer from Rawalpindi, Pakistan, with a specialization in Flutter and Android development. My work focuses on creating visually appealing and highly performant mobile applications. I take pride in writing clean, maintainable code and delivering seamless user experiences. With a keen eye for design and usability, I strive to bridge the gap between aesthetics and functionality. I continuously explore emerging technologies to enhance my skill set and contribute meaningfully to every project I undertake.",
             style: GoogleFonts.poppins(
               fontSize: 16,
               fontWeight: FontWeight.normal,

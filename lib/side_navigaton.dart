@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:particles_fly/particles_fly.dart';
-import 'package:resume_html/controller/side_navigation_controller.dart';
-import 'package:resume_html/divider.dart';
-import 'package:resume_html/sections/about.dart';
-import 'package:resume_html/sections/contact.dart';
-import 'package:resume_html/sections/resume.dart';
-import 'package:resume_html/utils/device_type_enum.dart';
+import 'package:Personal_Portfolio/controller/side_navigation_controller.dart';
+import 'package:Personal_Portfolio/divider.dart';
+import 'package:Personal_Portfolio/sections/about.dart';
+import 'package:Personal_Portfolio/sections/contact.dart';
+import 'package:Personal_Portfolio/sections/resume.dart';
+import 'package:Personal_Portfolio/utils/device_type_enum.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SideNavigaton extends StatelessWidget {
@@ -25,6 +25,23 @@ class SideNavigaton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF1D1D21),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: const Color(0xFF31313A),
+        onPressed: () async {
+          final Uri url = Uri.parse('https://calendly.com/talhamehtab2014');
+
+          if (await canLaunchUrl(url)) {
+            await launchUrl(url, mode: LaunchMode.externalApplication);
+          } else {
+            throw 'Could not launch $url';
+          }
+        }, // You can change the icon here
+        tooltip: 'Book a Meeting',
+        child: const Icon(
+          Icons.calendar_month,
+          color: Color(0xFFFF9800),
+        ),
+      ),
       body: deviceType == DeviceType.desktop
           ? _buildDesktopView(context)
           : _buildMobileView(context),
@@ -249,7 +266,7 @@ class SideNavigaton extends StatelessWidget {
                                   onTap: () {
                                     try {
                                       launchUrll(Uri.parse(
-                                          'https://talhaburneyyy.info/assets/assets/resume/resume.pdf'));
+                                          'https://talhaburneyyy.info/assets/assets/resume/Talha_Burney_4yrs.pdf'));
                                     } catch (e) {
                                       print(e);
                                     }
