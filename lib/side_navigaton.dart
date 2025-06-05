@@ -307,6 +307,7 @@ class SideNavigaton extends StatelessWidget {
                               Expanded(
                                 child: InkWell(
                                   onTap: () {
+                                    _scrollToSection(_section3Key);
                                     controller.updateIndex(2);
                                   },
                                   child: Row(
