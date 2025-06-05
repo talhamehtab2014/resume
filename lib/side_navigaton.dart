@@ -266,7 +266,7 @@ class SideNavigaton extends StatelessWidget {
                                   onTap: () {
                                     try {
                                       launchUrll(Uri.parse(
-                                          'https://talhaburneyyy.info/assets/assets/resume/Talha_Burney_4yrs.pdf'));
+                                          'https://talhaburneyyy.info/assets/assets/resume/resume.pdf'));
                                     } catch (e) {
                                       print(e);
                                     }
@@ -569,7 +569,7 @@ class SideNavigaton extends StatelessWidget {
                                 onTap: () {
                                   try {
                                     launchUrll(Uri.parse(
-                                        'https://talhaburneyyy.info/assets/assets/resume/Talha_Burney_4yrs.pdf'));
+                                        'https://talhaburneyyy.info/assets/assets/resume/resume.pdf'));
                                   } catch (e) {
                                     print(e);
                                   }
@@ -610,7 +610,7 @@ class SideNavigaton extends StatelessWidget {
                             Expanded(
                               child: InkWell(
                                 onTap: () {
-                                  controller.updateIndex(3);
+                                  controller.updateIndex(2);
                                 },
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
