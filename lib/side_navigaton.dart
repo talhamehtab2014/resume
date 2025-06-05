@@ -307,7 +307,7 @@ class SideNavigaton extends StatelessWidget {
                               Expanded(
                                 child: InkWell(
                                   onTap: () {
-                                    controller.updateIndex(3);
+                                    controller.updateIndex(2);
                                   },
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
